@@ -125,5 +125,5 @@ public abstract class Animal {
         }
     }
 
-
+    public abstract void act(List<Animal> animals);
 }
