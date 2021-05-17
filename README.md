@@ -1,2 +1,1 @@
-"# SSC-hw2" 
-"# SSC_hw2" 
+Rinradiphon Yostrakul
