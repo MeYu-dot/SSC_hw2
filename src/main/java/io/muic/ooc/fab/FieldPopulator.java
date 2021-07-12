@@ -22,7 +22,7 @@ public class FieldPopulator {
                 for(Map.Entry<AnimalType,Double> entry : probabilityMap.entrySet()){
                     if(RANDOM.nextDouble() < entry.getValue()) {
                         Location location = new Location(row,col);
-                        Animal animal = AnimalFactory.createAnimal(entry.getKey(),field,location);
+                        Animal animal = AnimalFactory.createYoung(entry.getKey(),field,location);
                         animals.add(animal);
                         break;
                     }

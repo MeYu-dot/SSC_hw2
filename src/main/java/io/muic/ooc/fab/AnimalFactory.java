@@ -12,12 +12,12 @@ public class AnimalFactory {
 
     }};
 
-    public static Animal createAnimal(AnimalType animalType, Field field, Location location){
+    public static Animal createYoung(AnimalType animalType, Field field, Location location){
         Class animalClass = animalClassMap.get(animalType);
-        return createAnimal(animalClass,field,location);
+        return createYoung(animalClass,field,location);
     }
 
-    public static Animal createAnimal(Class animalClass,Field field, Location location){
+    public static Animal createYoung(Class animalClass,Field field, Location location){
         if (animalClass != null){
             try {
                 Animal animal = (Animal) animalClass.newInstance();

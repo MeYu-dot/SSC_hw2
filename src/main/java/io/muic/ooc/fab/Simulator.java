@@ -2,16 +2,13 @@ package io.muic.ooc.fab;
 
 
 import io.muic.ooc.fab.view.SimulatorView;
-
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import java.util.Random;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.awt.Color;
 
-public class Simulator{
+public class Simulator {
 
     // Constants representing configuration information for the simulation.
     // The default width for the grid.
@@ -24,16 +21,15 @@ public class Simulator{
     private static final double RABBIT_CREATION_PROBABILITY = 0.08;
 
     // Lists of animals in the field.
+
     private List<Animal> animals;
-//    private List<Animal> foxes;
     // The current state of the field.
     private Field field;
     // The current step of the simulation.
     private int step;
     // A graphical view of the simulation.
     private SimulatorView view;
-    // Random generator
-    private static final Random RANDOM = new Random();
+
 
     /**
      * Construct a simulation field with default size.
@@ -57,13 +53,14 @@ public class Simulator{
         }
 
         animals = new ArrayList<>();
-//        foxes = new ArrayList<>();
         field = new Field(depth, width);
 
         // Create a view of the state of each location in the field.
         view = new SimulatorView(depth, width);
-        view.setColor(Rabbit.class, Color.ORANGE);
-        view.setColor(Fox.class, Color.BLUE);
+        AnimalType[] animalTypes = AnimalType.values();
+        for(int i = 0; i < animalTypes.length; i++){
+            view.setColor(animalTypes[i].getAnimalClass(),animalTypes[i].getColor());
+        }
 
         // Setup a valid starting point.
         reset();
@@ -99,7 +96,7 @@ public class Simulator{
 
         // Provide space for newborn rabbits.
         List<Animal> newAnimals = new ArrayList<>();
-        // Let all animals act.
+        // Let all rabbits act.
         for (Iterator<Animal> it = animals.iterator(); it.hasNext();) {
             Animal animal = it.next();
             animal.act(newAnimals);
@@ -107,21 +104,7 @@ public class Simulator{
                 it.remove();
             }
         }
-
-//        // Provide space for newborn foxes.
-//        List<Fox> newFoxes = new ArrayList<>();
-//        // Let all foxes act.
-//        for (Iterator<Fox> it = foxes.iterator(); it.hasNext();) {
-//            Fox fox = it.next();
-//            fox.hunt(newFoxes);
-//            if (!fox.isAlive()) {
-//                it.remove();
-//            }
-//        }
-
-        // Add the newly born foxes and rabbits to the main lists.
         animals.addAll(newAnimals);
-//        foxes.addAll(newFoxes);
 
         view.showStatus(step, field);
     }
@@ -132,16 +115,12 @@ public class Simulator{
     public void reset() {
         step = 0;
         animals.clear();
-//        foxes.clear();
         new FieldPopulator().populate(field,animals);
 
         // Show the starting state in the view.
         view.showStatus(step, field);
     }
 
-    /**
-     * Randomly populate the field with foxes and rabbits.
-     */
     /**
      * Pause for a given time.
      *
