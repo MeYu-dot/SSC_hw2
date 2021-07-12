@@ -1,13 +1,11 @@
 package io.muic.ooc.fab;
 
-import java.util.List;
-import java.util.Random;
+public class Rabbit extends Prey{
 
-public class Rabbit extends Prey {
-    // Characteristics shared by all rabbits (class variables).
-
-
-
+    @Override
+    protected int getMaxAge() {
+        return 40;
+    }
 
     @Override
     protected double getBreedingProbability() {
@@ -20,13 +18,9 @@ public class Rabbit extends Prey {
     }
 
     @Override
-    public int getMaxAge() {
-        return 40;
-    }
-
-    @Override
     protected int getBreedingAge() {
         return 5;
     }
+
 
 }

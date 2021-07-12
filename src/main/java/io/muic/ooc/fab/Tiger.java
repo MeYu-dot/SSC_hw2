@@ -1,6 +1,16 @@
 package io.muic.ooc.fab;
 
+import java.util.Iterator;
+import java.util.List;
+
 public class Tiger extends Predator{
+
+    @Override
+    protected AnimalType[] getPrey() {
+        return new AnimalType[]{AnimalType.RABBIT,AnimalType.FOX};
+    }
+
+
 
 
     @Override
@@ -23,8 +33,4 @@ public class Tiger extends Predator{
         return 30;
     }
 
-    @Override
-    protected AnimalType[] getPrey() {
-        return new AnimalType[]{AnimalType.RABBIT,AnimalType.FOX};
-    }
 }

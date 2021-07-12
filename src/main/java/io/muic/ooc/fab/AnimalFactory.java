@@ -4,10 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class AnimalFactory {
-    private static Map<AnimalType,Class> animalClassMap = new HashMap<AnimalType,Class>() {{
+
+    private static Map<AnimalType,
+            Class> animalClassMap = new HashMap<AnimalType,Class>() {{
         AnimalType[] animalTypes = AnimalType.values();
         for(int i = 0; i < animalTypes.length; i++){
-            put(animalTypes[i],animalTypes[i]   .getAnimalClass());
+            put(animalTypes[i],animalTypes[i].getAnimalClass());
         }
 
     }};
@@ -17,7 +19,7 @@ public class AnimalFactory {
         return createYoung(animalClass,field,location);
     }
 
-    public static Animal createYoung(Class animalClass,Field field, Location location){
+    public static Animal createYoung(Class animalClass, Field field, Location location){
         if (animalClass != null){
             try {
                 Animal animal = (Animal) animalClass.newInstance();

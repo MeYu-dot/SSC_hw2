@@ -1,6 +1,5 @@
 package io.muic.ooc.fab;
 
-
 import java.util.Iterator;
 import java.util.List;
 
@@ -12,14 +11,12 @@ public abstract class Predator extends Animal {
         super.initialize(randomAge, field, location);
         foodLevel = RANDOM.nextInt(AnimalType.RABBIT.getFoodValue());
     }
-
     private void incrementHunger() {
         foodLevel--;
         if (foodLevel <= 0) {
             setDead();
         }
     }
-
     public void act(List<Animal> newAnimal) {
         incrementHunger();
         super.act(newAnimal);

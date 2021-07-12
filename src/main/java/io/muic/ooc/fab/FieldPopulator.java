@@ -1,9 +1,12 @@
 package io.muic.ooc.fab;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+
 public class FieldPopulator {
+
     private static final Random RANDOM = new Random();
 
     private Map<AnimalType,Double> probabilityMap = new HashMap<AnimalType,Double>() {{

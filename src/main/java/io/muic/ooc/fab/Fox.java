@@ -1,6 +1,16 @@
 package io.muic.ooc.fab;
 
-public class Fox extends Predator {
+import java.util.List;
+import java.util.Iterator;
+import java.util.Random;
+
+public class Fox extends Predator{
+
+    @Override
+    protected AnimalType[] getPrey() {
+        return new AnimalType[]{AnimalType.RABBIT};
+    }
+
     @Override
     protected int getMaxAge() {
         return 150;
@@ -21,8 +31,5 @@ public class Fox extends Predator {
         return 15;
     }
 
-    @Override
-    protected AnimalType[] getPrey() {
-        return new AnimalType[]{AnimalType.RABBIT};
-    }
+
 }

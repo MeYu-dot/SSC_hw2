@@ -1,6 +1,7 @@
 package io.muic.ooc.fab;
 
 public class Hunter extends Predator{
+
     @Override
     protected void setDead(){}
 
