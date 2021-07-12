@@ -1,2 +1,2 @@
-"# SSC-hw2" 
-"# SSC_hw2" 
+2.1 is main branch
+2.2 is 2.2 branch
