@@ -1,9 +1,11 @@
 package io.muic.ooc.fab;
 
-public class Fox extends Predator {
+public class Tiger extends Predator{
+
+
     @Override
     protected int getMaxAge() {
-        return 150;
+        return 200;
     }
 
     @Override
@@ -18,11 +20,11 @@ public class Fox extends Predator {
 
     @Override
     protected int getBreedingAge() {
-        return 15;
+        return 30;
     }
 
     @Override
     protected AnimalType[] getPrey() {
-        return new AnimalType[]{AnimalType.RABBIT};
+        return new AnimalType[]{AnimalType.RABBIT,AnimalType.FOX};
     }
 }

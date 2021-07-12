@@ -13,9 +13,17 @@ public abstract class Animal {
     protected Field field;
     // Individual characteristics (instance fields).
     // The fox's age.
-    protected int age;
+    protected int age = 0;
 
-    private static final Random RANDOM = new Random();
+    protected static final Random RANDOM = new Random();
+
+    public void initialize(boolean randomAge,Field field,Location location) {
+        this.field = field;
+        setLocation(location);
+        if (randomAge) {
+            age = RANDOM.nextInt(getMaxAge());
+        }
+    }
 
 
     /**
@@ -40,7 +48,7 @@ public abstract class Animal {
         return location;
     }
 
-    public abstract int getMaxAge();
+    protected abstract int getMaxAge();
 
     /**
      * Increase the age. This could result in the rabbit's death.
@@ -105,8 +113,11 @@ public abstract class Animal {
 
     protected abstract int getBreedingAge();
 
-    protected abstract Animal createYoung(boolean randomAge, Field field, Location location);
+    private Animal createYoung(boolean randomAge,Field field, Location location){
+        return AnimalFactory.createAnimal(getClass(),field,location);
+    }
 
+    protected abstract Location move();
     /**
      * Check whether or not this rabbit is to give birth at this step. New
      * births will be made into free adjacent locations.
@@ -125,5 +136,17 @@ public abstract class Animal {
         }
     }
 
-    public abstract void act(List<Animal> animals);
+    public void act(List<Animal> newAnimals){
+        incrementAge();
+        if (isAlive()) {
+            giveBirth(newAnimals);
+            Location newLocation = move();
+            if (newLocation != null) {
+                setLocation(newLocation);
+            } else {
+                setDead();
+            }
+        }
+    }
+
 }
